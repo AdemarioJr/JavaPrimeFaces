@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.ApplicationScoped;
+//import javax.enterprise.context.RequestScoped;
 //import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -13,7 +14,8 @@ import br.com.dominio.model.Pessoa;
 
 @Named("bean")
 //@SessionScoped
-@RequestScoped
+//@RequestScoped
+@ApplicationScoped
 public class PessoaBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
