@@ -11,7 +11,8 @@ import javax.inject.Named;
 import br.com.dominio.model.Pessoa;
 
 @Named("bean")
-@SessionScoped
+//@SessionScoped
+@RequestScoped
 public class PessoaBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
