@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.Conversation;
+import javax.enterprise.context.ConversationScoped;
+//import javax.enterprise.context.ApplicationScoped;
 //import javax.enterprise.context.RequestScoped;
 //import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -15,20 +17,34 @@ import br.com.dominio.model.Pessoa;
 @Named("bean")
 //@SessionScoped
 //@RequestScoped
-@ApplicationScoped
+//@ApplicationScoped
+@ConversationScoped
 public class PessoaBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Inject
 	private Pessoa pessoa;
 	
+	@Inject
+	private Conversation conversation;
+	
 	private List<Pessoa> pessoas = new ArrayList<>();
 	
 	public String adicionar() {
+		//Teste para ConversationScoped
+		if(pessoas.isEmpty()) {
+			conversation.begin();
+		}
+				
 		pessoas.add(pessoa);
 		
 		limpar();
 		
+		return null;
+	}
+	
+	public String parar() {
+		conversation.end();
 		return null;
 	}
 	
